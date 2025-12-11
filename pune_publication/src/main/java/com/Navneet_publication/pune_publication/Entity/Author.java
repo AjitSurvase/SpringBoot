@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Author {
@@ -17,6 +18,14 @@ public class Author {
 	private String authorname;
 	
 	private String email;
+	
+	
+	
+
+	@OneToOne(mappedBy = "author")   // inverse side
+    private Book book;
+	
+	
 
 	public Author() {
 		super();
@@ -54,5 +63,11 @@ public class Author {
 		this.email = email;
 	}
 	
-	
+	public Book getBook() {
+		return book;
+	}
+
+	public void setBook(Book book) {
+		this.book = book;
+	}
 }
